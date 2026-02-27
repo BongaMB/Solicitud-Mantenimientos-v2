@@ -131,18 +131,19 @@
                 </div>
                 -->
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="date" name="fechaR" id="fechaR" class="validate">
-                    <label for="fechaR" class="active" >Fecha de Realizacion:</label>
-                </div>
+            <!-- Cambie la fecha para que se vea en automatico... -->
+           <div class="row">
+             <div class="input-field col s12">
+                <input type="date" name="fechaR" id="fechaR" class="validate" value="<?php date_default_timezone_set('America/Mexico_City'); echo date('Y-m-d'); ?>" readonly>
+                 <label for="fechaR" class="active" >Fecha de Realizacion:</label>
             </div>
+        </div>
             <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="descrip" id="descrip" class="validate">
-                    <label for="descrip" class="active">Descripcion del Mantenimiento:</label>
-                </div>
-            </div>
+        <div class="input-field col s12">
+                <input type="text" name="descrip" id="descrip" class="validate">
+                <label for="descrip" class="active">Descripcion del Mantenimiento:</label>
+           </div>
+         </div>
         </form>
         <!-- Botónes para mostrar la tabla -->
         <div class="center-align">
