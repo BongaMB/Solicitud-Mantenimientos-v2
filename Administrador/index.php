@@ -109,7 +109,7 @@
     <div class="row" style="margin-top:40px;">
       <!-- Tarjeta 1 -->
       <div class="col s12 m6">
-        <a href="../Correctivos/index.php" class="black-text">
+        <a href="../Solicitud_Correctivo/index.php" class="black-text">
           <div class="option-card">
             <i class="material-icons option-icon">assignment_turned_in</i>
             <div class="option-title">Solicitudes de Mantenimiento Correctivo</div>

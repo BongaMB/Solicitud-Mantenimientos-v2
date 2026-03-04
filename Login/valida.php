@@ -35,11 +35,11 @@ if($resultado && mysqli_num_rows($resultado) > 0) {
         }
         elseif($filas['idrol'] == 2) {
         // Cliente: rol 2 → página de cliente
-            header("Location: cliente.php");
+            header("Location: ../Solicitud/index.php");
             exit();
         }
         elseif($filas['idrol']==3){
-            header("location:usuario.php");
+            header("location: ../Correctivos/index.php");
             exit();
         }
         else {                      // ← este else se queda

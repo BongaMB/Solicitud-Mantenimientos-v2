@@ -32,6 +32,14 @@
             $sentencia = "Update correctivo set idDep='$iddep' , id_area='$idarea', idPer='$idper', fecha_elabo='$fechaR', Descripcion='$descri' Where idCorr='$idCorr'";
             return Ejecuta($sentencia);
         }
+
+            // Dentro de la clase correctivo en Modelo/Correctivo.php
+        public function ActualizarEstado($id, $estado) {
+            // IMPORTANTE: Verifica que el nombre de la columna sea 'nuevos_estado'
+            $sql = "UPDATE correctivo SET nuevos_estado = '$estado' WHERE idCorr = $id";
+            // Usa el método de ejecución que ya tengas en tu modelo (ejemplo: ejecutar)
+            return Ejecuta($sql); 
+        }
         public function Eliminar($post)
         {
             $idcorr = $post['idCorr'];
