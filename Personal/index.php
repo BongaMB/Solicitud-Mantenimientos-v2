@@ -12,6 +12,13 @@
 </head>
 <body>
 
+ <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 <!-- Colocar su código a partir de este comentario -->
 <div class="container">
     <div class="row">
@@ -35,7 +42,6 @@
                                 <th>Correo Electronico</th>
                                 <th>Cargo del Empleado</th>
                                 <th>Departamento Asignado</th>
-                                <th>Area Asignada</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -83,16 +89,6 @@
                         ?>
                     </select>
                 </div>
-            </div>
-            <div class="row">
-            <div class="input-field col s12">
-                    <select name="id_area" id="id_area">
-                        <option value="">Selecciona una opcion</option>
-                        <?php
-                           include_once("./LlenaSelectA.php");
-                        ?>
-                    </select>
-            </div>
             </div>
         </form>
     </div>

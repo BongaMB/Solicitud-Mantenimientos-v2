@@ -5,7 +5,8 @@
       foreach ($tuplas as $tupla){
           $iddep = $tupla['idDep'];  
           $nomdep = $tupla['nombreDep'];
-          $encar = $tupla['Encargado'];
-          echo "<option value='$iddep'>$nomdep</option>";
+          $idjefe = $tupla['idjefe'];
+          $nom = $tupla['nom'];
+          echo "<option value='$iddep' data-nom='$nom'>$nomdep</option>";
       }
 ?>

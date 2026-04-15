@@ -9,7 +9,6 @@
         $post['correo'] = isset($post['correo']) ? limpiarCadena($post['correo']):"";
         $post['cargo'] = isset($post['cargo']) ? limpiarCadena($post['cargo']):"";
         $post['idDep'] = isset($post['idDep']) ? limpiarCadena($post['idDep']):"";
-        $post['id_area'] = isset($post['id_area']) ? limpiarCadena($post['id_area']):"";
 
         $accion = $post["accion"];
         if ($accion == "Ins") $result = $obj->Insertar($post);

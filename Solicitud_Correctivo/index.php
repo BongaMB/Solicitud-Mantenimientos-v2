@@ -64,6 +64,12 @@
     </style>
 </head>
 <body>
+    <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
 
 <!--                     Ventana modal como pantalla principal                       -->
 <div id="ventanaModal" class="modal" style="display: block; position: relative; opacity: 1; transform: none;">
@@ -133,8 +139,7 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="date" name="fechaR" id="fechaR" class="validate">
-                    <label for="fechaR" class="active" >Fecha de Realizacion:</label>
+                    <input type="date" name="fechaR" id="fechaR" class="validate" value="<?php date_default_timezone_set('America/Mexico_City'); echo date('Y-m-d'); ?>" readonly>
                 </div>
             </div>
             <div class="row">

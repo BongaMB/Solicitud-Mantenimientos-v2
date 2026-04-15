@@ -12,13 +12,12 @@ function init()
     validateForm();
 
     $('#add').on("click", function(){ //pertenece al boton de "+"
-        $('#idPer').val('');
-        $('#nombrePer').val('');
+        $('#idjefe').val('');
+        $('#nom').val('');
         $('#correo').val('');
-        $('#cargo').val('');
-        $('#idDep').val('');
+        $('#tel').val('');
         $('#ventanaModal').modal('open'); // abre la ventana modal
-        $('#nombrePer').focus();
+        $('#nom').focus();
     });
 
     $('#btnGuardar').on("click", function(){ // este boton lo vemos en el index.php y manda el evento submit , pero para eso tiene que validarse
@@ -26,26 +25,23 @@ function init()
     });
 
     $(document).on("click", '.edit', function(){ // el document jala todo lo del index, si en el docuemnto en el evento click donde ahi elementos con el evento edit
-        var idPer = $(this).attr("data-idPer");// con el this , jalamos todos los datos y en este caso jalamos ela caja de texto osea el input
-        var nombrePer = $(this).attr("data-nombrePer");
+        var idjefe = $(this).attr("data-idjefe");// con el this , jalamos todos los datos y en este caso jalamos ela caja de texto osea el input
+        var nom = $(this).attr("data-nom");
         var correo = $(this).attr("data-correo");
-        var cargo = $(this).attr("data-cargo");
-        var idDep = $(this).attr("data-idDep");
-        $('#idPer').val(idPer);
-        $('#nombrePer').val(nombrePer);
+        var tel = $(this).attr("data-tel");
+        $('#idjefe').val(idjefe);
+        $('#nom').val(nom);
         $('#correo').val(correo);
-        $('#cargo').val(cargo);
-        $('#idDep').val(idDep);
-        $('#idDep').formSelect();
+        $('#tel').val(tel);
         M.updateTextFields();// con uptadeTextFields , recorre las etiquetas dentro del input 
         $('#ventanaModal').modal('open');// abrimos la venta modal
-        $('#nombrePer').focus();//pone el cursor en el nomc
+        $('#nom').focus();//pone el cursor en el nomc
     });
 
     $(document).on("click", '.delete', function()// es lo mismo que el de "edit" pero ahora con el evento delete
     {
-        var idPer = $(this).attr("data-idPer");
-        var parametros = "idPer=" + idPer + "&accion=Eli";
+        var idjefe = $(this).attr("data-idjefe");
+        var parametros = "idjefe=" + idjefe + "&accion=Eli";
         $.ajax({
             type: "post",
             url: controlador,
@@ -54,10 +50,10 @@ function init()
             success: function(respuesta){
                 if (respuesta['status']==1){
                     var data = respuesta['data'];
-                    if (idPer>0){
-                        table.row('#' + data.idPer).remove().draw();
+                    if (idjefe>0){
+                        table.row('#' + data.idjefe).remove().draw();
                     }
-                    M.toast({html: 'Empleado Eliminado', classes: 'rounded blue lighten-2'});
+                    M.toast({html: 'Jefe Eliminada', classes: 'rounded blue lighten-2'});
                 }
             } 
         });
@@ -67,17 +63,10 @@ function init()
 function validateForm(){ // esto es la validacion del formulario
     $('#formulario').validate({
         rules:{
-            nombrePer:{required:true, minlength:1, maxlength:60},
-            correo:{required:true, email:true},
-            cargo:{required:true, minlength:1, maxlength:60},
             
         },
         messages: {
-            nombrePer:{required:"No puedes dejar este campo vacío",minlength:"Debes ingresar al menos 4 caracteres", maxlength:"No puedes ingresar más de 60 caracteres"},
-            correo:{required:"No puedes dejar este campo vacío", email:"Debes ingresar un correo"},
-            cargo:{required:"No puedes dejar este campo vacío"},
-
-
+            
         },
         errorElement: "div",
         errorClass: "invalid",
@@ -91,10 +80,9 @@ function validateForm(){ // esto es la validacion del formulario
 }
 
 function guardarRegistro(){ // este lo guarada
-    var idPer = $("#idPer").val();  
+    var idjefe = $("#idjefe").val();  
     var parametros = $("#formulario").serialize(); //serializa los datos que traen los datos
-    var nomdep = $("#idDep option:selected").text();
-    if (idPer > 0){// a qui define si es una insercion o una ctualizacion
+    if (idjefe> 0){// a qui define si es una insercion o una ctualizacion
         parametros = parametros + "&accion=Act";
     }
     else{
@@ -107,24 +95,23 @@ function guardarRegistro(){ // este lo guarada
         data: parametros,
         success: function(respuesta){
             if (respuesta['status']==1){
-               
-                limpiarFormulario(); 
+
+                limpiarFormulario(); // Llamo la funcion que se creo para que limpie todo lo que dice en el funcion
                 $('#ventanaModal').modal('close');
 
                 var data = respuesta['data'];// este data tiene todo lo que se declaro con el $post
-                if (idPer >0){
-                    table.row('#' + data.idPer).remove().draw();//jala todo lo del data en el idclasific
+                if (idjefe >0){
+                    table.row('#' + data.idjefe).remove().draw();//jala todo lo del data en el idclasific
                 }
                 var row = table.row.add([ //Luego lo vuelve agregar con su respectivo data , que ya trae todo lo del post
-                    data.nombrePer,
+                    data.nom,
                     data.correo,
-                    data.cargo,
-                    nomdep,
-                    '<i class="material-icons edit" data-idPer="' + data.idPer + '" data-nombrePer="' + data.nombrePer +'" data-correo="' + data.correo +'" data-cargo="' + data.cargo +'" data-nomdep="' + nomdep +'">create</i><i class="material-icons delete" data-idPer="' + data.idPer + '">delete_forever</i>' //boton para eliminar o actualizar dentro de la tabla con sus botones
+                    data.tel,
+                    '<i class="material-icons edit" data-idjefe="' + data.idjefe + '" data-nom="' + data.nom +'" data-correo="' + data.correo +'" data-tel="' + data.tel +'">create</i><i class="material-icons delete" data-idjefe="' + data.idjefe + '">delete_forever</i>' //boton para eliminar o actualizar dentro de la tabla con sus botones
                 ]).draw().node();
-                $(row).attr('id',data.idPer);
+                $(row).attr('id',data.idjefe);
 
-                M.toast({html: 'Empleado Guardado', classes: 'rounded blue lighten-2'});
+                M.toast({html: 'Jefe de departamento guardado', classes: 'rounded blue lighten-2'});
             }
         } 
     });

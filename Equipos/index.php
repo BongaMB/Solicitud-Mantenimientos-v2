@@ -12,6 +12,13 @@
 </head>
 <body>
 
+ <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 
 <!-- Colocar su código a partir de este comentario -->
 <div class="container">

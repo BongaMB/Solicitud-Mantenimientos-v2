@@ -12,13 +12,6 @@
 </head>
 <body>
 
- <!--boton de regresar-->
-    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
-  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
-    <i class="material-icons">chevron_left</i>
-  </a>
-</div>
-
 <!-- Colocar su código a partir de este comentario -->
 <div class="container">
     <div class="row">
@@ -35,7 +28,9 @@
                     <table id="dtTable" class="highlight bordered dataTable">
                         <thead>
                             <tr>
-                                <th>Tipo de Modalidad</th>
+                                <th>Nombre del Jefe</th>
+                                <th>Correo Electronico</th>
+                                <th>Telefono</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -58,10 +53,22 @@
         <br>
         <form id="formulario" method="post">
             <div class="row">
+                <div class="input-field col s6">
+                    <input type="hidden" name="idjefe" id="idjefe">
+                    <input type="text" name="nom" id="nom" class="validate">
+                    <label class="active" for="nom">Nombre del Encargado: </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" name="correo" id="correo" class="validate">
+                    <label class="active" for="correo">Correo Electronico: </label>
+                </div>
+            </div>
+            <div class="row">
                 <div class="input-field col s12">
-                    <input type="hidden" name="idModalidad" id="idModalidad">
-                    <input type="text" name="tipo" id="tipo" class="validate">
-                    <label class="active" for="tipo">Tipo de Modalidad: </label>
+                    <input type="text" name="tel" id="tel" class="validate">
+                    <label class="active" for="tel">Telefono / Extencion: </label>
                 </div>
             </div>
         </form>

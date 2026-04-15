@@ -11,13 +11,10 @@
           // aqui inician los parametros del departamento
           $iddep = $tupla['idDep'];
           $nomdep = $tupla['nombreDep'];
-          //Parametros del area
-          $idarea = $tupla['id_area'];
-          $nomarea = $tupla['nombre_area'];
 
-          echo "<tr id=$idper><td>$nomper</td><td>$correo</td><td>$cargo</td><td>$nomdep</td><td>$nomarea</td>
+          echo "<tr id='$idper'><td>$nomper</td><td>$correo</td><td>$cargo</td><td>$nomdep</td>
           <td>
-            <i class='material-icons edit' data-idPer='$idper' data-nombrePer='$nomper' data-correo='$correo' data-cargo='$cargo' data-idDep='$iddep' data-nomdep='$nomdep' data-id_area='$idarea' data-nomarea='$nomarea'>create</i>
+            <i class='material-icons edit' data-idPer='$idper' data-nombrePer='$nomper' data-correo='$correo' data-cargo='$cargo' data-idDep='$iddep' data-nomdep='$nomdep'>create</i>
             <i class='material-icons delete' data-idPer='$idper'>delete_forever</i>
             </td></tr>";
       }

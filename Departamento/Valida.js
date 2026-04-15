@@ -16,7 +16,8 @@ function init()
         $('#nombreDep').val('');
         $('#correoDep').val('');
         $('#telefono').val('');
-        $('#Encargado').val('');
+        $('#idjefe').val('');
+        $('#id_area').val('');
         $('#ventanaModal').modal('open'); // abre la ventana modal
         $('#nombreDep').focus();
     });
@@ -30,12 +31,16 @@ function init()
         var nomdep = $(this).attr("data-nombreDep");
         var correo = $(this).attr("data-correoDep");
         var tel = $(this).attr("data-telefono");
-        var encar = $(this).attr("data-Encargado");
+        var idjefe = $(this).attr("data-idjefe");
+        var area = $(this).attr("data-id_area");
         $('#idDep').val(iddep);
         $('#nombreDep').val(nomdep);
         $("#correoDep").val(correo);
         $("#telefono").val(tel);
-        $("#Encargado").val(encar);
+        $("#idjefe").val(idjefe);
+        $("#idjefe").formSelect();
+        $("#id_area").val(area);
+        $("#id_area").formSelect();
         M.updateTextFields();// con uptadeTextFields , recorre las etiquetas dentro del input 
         $('#ventanaModal').modal('open');// abrimos la venta modal
         $('#nombreDep').focus();//pone el cursor en el nomc
@@ -91,6 +96,8 @@ function validateForm(){ // esto es la validacion del formulario
 function guardarRegistro(){ // este lo guarada
     var iddep = $("#idDep").val();  
     var parametros = $("#formulario").serialize(); //serializa los datos que traen los datos
+    var nom = $("#idjefe option:selected").text();
+    var nomArea = $("#id_area option:selected").text();
     if (iddep > 0){// a qui define si es una insercion o una ctualizacion
         parametros = parametros + "&accion=Act";
     }
@@ -104,12 +111,10 @@ function guardarRegistro(){ // este lo guarada
         data: parametros,
         success: function(respuesta){
             if (respuesta['status']==1){
-                $('#idDep').val('');
-                $('#nombreDep').val('');
-                $('#correoDep').val('');
-                $('#telefono').val('');
-                $('#Encargado').val('');
+
+                limpiarFormulario(); // Llamo la funcion que se creo para que limpie todo lo que dice en el funcion
                 $('#ventanaModal').modal('close');
+
                 var data = respuesta['data'];// este data tiene todo lo que se declaro con el $post
                 if (iddep >0){
                     table.row('#' + data.idDep).remove().draw();//jala todo lo del data en el idclasific
@@ -118,8 +123,9 @@ function guardarRegistro(){ // este lo guarada
                     data.nombreDep,
                     data.correoDep,
                     data.telefono,
-                    data.Encargado,
-                    '<i class="material-icons edit" data-idDep="' + data.idDep + '" data-nombreDep="' + data.nombreDep +'" data-correoDep="' + data.correoDep + '" data-telefono="' + data.telefono +'" data-Encargado="' + data.Encargado +'">create</i><i class="material-icons delete" data-idDep="' + data.idDep + '">delete_forever</i>' //boton para eliminar o actualizar dentro de la tabla con sus botones
+                    nom,
+                    nomArea,
+                    '<i class="material-icons edit" data-idDep="' + data.idDep + '" data-nombreDep="' + data.nombreDep +'" data-correoDep="' + data.correoDep + '" data-telefono="' + data.telefono +'" data-nom="' + nom + '" data-nomarea="' + nomArea + '">create</i><i class="material-icons delete" data-idDep="' + data.idDep + '">delete_forever</i>' //boton para eliminar o actualizar dentro de la tabla con sus botones
                 ]).draw().node();
                 $(row).attr('id',data.idDep);
 
@@ -128,3 +134,10 @@ function guardarRegistro(){ // este lo guarada
         } 
     });
 }
+
+
+    function limpiarFormulario() {
+        $('#formulario')[0].reset(); // limpia inputs y selects
+        $('select').val('').formSelect(); // actualiza selects visualmente
+        M.updateTextFields(); // actualiza etiquetas flotantes
+    }

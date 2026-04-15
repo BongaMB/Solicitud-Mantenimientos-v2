@@ -13,8 +13,7 @@ function init()
 
     $('#add').on("click", function(){ //pertenece al boton de "+"
         $('#id_area').val('');
-        $('#nomArea').val('');
-        $('#idDep').val('');    
+        $('#nomArea').val(''); 
         $('#dire').val('');
         $('#subdir').val('');
         $('#direfi').val('');
@@ -30,15 +29,12 @@ function init()
     $(document).on("click", '.edit', function(){ // el document jala todo lo del index, si en el docuemnto en el evento click donde ahi elementos con el evento edit
         var idarea = $(this).attr("data-id_area");// con el this , jalamos todos los datos y en este caso jalamos ela caja de texto osea el input
         var nomarea = $(this).attr("data-nomArea");
-        var idDep = $(this).attr("data-idDep");
         var dire = $(this).attr("data-dire");
         var subdir = $(this).attr("data-subdir");
         var dirf = $(this).attr("data-direfi");
         var oficina = $(this).attr("data-oficina");
         $('#id_area').val(idarea);
         $('#nomArea').val(nomarea);
-        $('#idDep').val(idDep);
-        $('#idDep').formSelect();
         $('#dire').val(dire);
         $('#subdir').val(subdir);
         $('#direfi').val(dirf);
@@ -102,7 +98,6 @@ function validateForm(){ // esto es la validacion del formulario
 function guardarRegistro(){ // este lo guarada
     var idarea = $("#id_area").val();  
     var parametros = $("#formulario").serialize(); //serializa los datos que traen los datos
-    var nomdep = $("#idDep option:selected").text();
     if (idarea > 0){// a qui define si es una insercion o una ctualizacion
         parametros = parametros + "&accion=Act";
     }
@@ -118,7 +113,6 @@ function guardarRegistro(){ // este lo guarada
             if (respuesta['status']==1){
                 $('#id_area').val('');
                 $('#nomArea').val('');
-                $('#idDep').val('');
                 $('#dire').val('');
                 $('#subdir').val('');
                 $('#direfi').val('');
@@ -130,12 +124,11 @@ function guardarRegistro(){ // este lo guarada
                 }
                 var row = table.row.add([
                     data.nomArea,
-                    nomdep,
                     data.dire,
                     data.subdir,
                     data.direfi,
                     data.oficina,
-                    '<i class="material-icons edit" data-id_area="' + data.id_area + '" data-nomArea="' + data.nomArea + '" data-nomdep="' + nomdep +'" data-dire="' + data.dire + '" data-subdir="' + data.subdir + '" data-direfi="' + data.direfi + '" data-oficina="' + data.oficina + '">create</i>' +
+                    '<i class="material-icons edit" data-id_area="' + data.id_area + '" data-nomArea="' + data.nomArea + '" data-dire="' + data.dire + '" data-subdir="' + data.subdir + '" data-direfi="' + data.direfi + '" data-oficina="' + data.oficina + '">create</i>' +
                     '<i class="material-icons delete" data-id_area="' + data.id_area + '">delete_forever</i>'
                     ]).draw().node();
 

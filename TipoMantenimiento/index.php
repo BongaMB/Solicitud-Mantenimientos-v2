@@ -12,7 +12,21 @@
 </head>
 <body>
 
-<!-- Colocar su código a partir de este comentario -->
+
+ <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
+    <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 <div class="container">
     <div class="row">
         <div class="col s12 ">

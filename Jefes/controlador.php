@@ -1,18 +1,13 @@
 <?php
-    require_once("../Modelo/Areas.php");
-    $obj = new Areas();
+    require_once("../Modelo/Jefes.php");
+    $obj = new Jefes();
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $post = $_POST;
       
-        $post['id_area'] = isset($post['id_area']) ? limpiarCadena($post['id_area']):"";
-        $post['nomArea'] = isset($post['nomArea']) ? limpiarCadena($post['nomArea']):"";
-        $post['dire'] = isset($post['dire']) ? limpiarCadena($post['dire']):"";
-        $post['subdir'] = isset($post['subdir']) ? limpiarCadena($post['subdir']):"";
-        $post['direfi'] = isset($post['direfi']) ? limpiarCadena($post['direfi']):"";
-        $post['oficina'] = isset($post['oficina']) ? limpiarCadena($post['oficina']):"";
-
-    
-
+        $post['idjefe'] = isset($post['idjefe']) ? limpiarCadena($post['idjefe']):"";
+        $post['nom'] = isset($post['nom']) ? limpiarCadena($post['nom']):"";
+        $post['correo'] = isset($post['correo']) ? limpiarCadena($post['correo']):"";
+        $post['tel'] = isset($post['tel']) ? limpiarCadena($post['tel']):"";
         $accion = $post["accion"];
         if ($accion == "Ins") $result = $obj->Insertar($post);
         if ($accion == "Act") $result = $obj->Actualizar($post);

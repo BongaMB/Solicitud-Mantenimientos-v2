@@ -13,9 +13,8 @@
     $correo = $post['correo'];
     $cargo = $post['cargo'];
     $iddep = $post['idDep'];
-    $idarea = $post['id_area'];
-    $sentencia = "Insert into personal (nombrePer,  correoPer, cargoPer, idDep , id_area ) values 
-    ('$nomper',  '$correo', '$cargo', $iddep , $idarea)";
+    $sentencia = "Insert into personal (nombrePer,  correoPer, cargoPer, idDep) values 
+    ('$nomper',  '$correo', '$cargo', $iddep)";
     $post['idPer'] = EjecutaConsecutivo($sentencia);
     return $post['idPer'];
 }
@@ -28,9 +27,9 @@
     $correo = $post['correo']; 
     $cargo = $post['cargo'];
     $iddep = $post['idDep'];
-    $idarea = $post['id_area'];
+    
 
-    $sentencia = "UPDATE personal SET nombrePer='$nomper', correoPer='$correo', cargoPer='$cargo', idDep='$iddep', id_area='$idarea' WHERE idPer='$idper'";
+    $sentencia = "UPDATE personal SET nombrePer='$nomper', correoPer='$correo', cargoPer='$cargo', idDep='$iddep' WHERE idPer='$idper'";
     return Ejecuta($sentencia);
 }
 
@@ -43,7 +42,7 @@
 
           public function Consultar()
           {
-              $query = "select p.idPer , p.nombrePer, p.correoPer, p.cargoPer, d.idDep, d.nombreDep , a.id_area , a.nombre_area from personal p inner join departamento d on p.idDep=d.idDep inner join Areas a on p.id_area=a.id_area";
+              $query = "select p.idPer , p.nombrePer, p.correoPer, p.cargoPer, d.idDep, d.nombreDep from personal p inner join departamento d on p.idDep=d.idDep";
               return Consulta($query);
           }
 

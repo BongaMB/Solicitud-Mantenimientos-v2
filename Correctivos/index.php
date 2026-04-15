@@ -65,6 +65,13 @@
 </head>
 <body>
 
+<!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 <!--                     Ventana modal como pantalla principal                       -->
 <div id="ventanaModal" class="modal" style="display: block; position: relative; opacity: 1; transform: none;">
     <div class="modal-content">

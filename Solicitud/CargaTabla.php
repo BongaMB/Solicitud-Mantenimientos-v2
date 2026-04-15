@@ -6,19 +6,21 @@
       foreach ($tuplas as $tupla){
           $idsoli = $tupla['idSoli'];
 
-
           $idmod = $tupla['idModalidad'];
           $tipom = $tupla['tipo'];
 
           $iddep= $tupla['idDep'];
           $nomdep = $tupla['nombreDep'];
-          $encar = $tupla['Encargado'];
+
 
           $idman = $tupla['id_Man'];
           $mante = $tupla['mantenimiento'];
 
-          $idres = $tupla['idRes'];
-          $nomres = $tupla['nombreRes'];
+          $idPer = $tupla['idPer'];
+          $nomper = $tupla['nombrePer'];
+
+          // ahora traemos directamente el nombre del jefe desde el JOIN
+          $nom = $tupla['nom'];
 
           $fechar = $tupla['fechadeRealizacion'];
           $descrip = $tupla['Descripcion'];
@@ -29,14 +31,28 @@
           <td>$tipom</td>
           <td>$nomdep</td>
           <td>$mante</td>
-          <td>$nomres</td>
+          <td>$nomper</td>
           <td>$fechar</td>
           <td>$descrip</td>
-          <td>$encar</td>
+          <td>$nom</td>
           <td>$em</td>
           <td>$obser</td>
           <td>
-            <i class='material-icons edit' data-idSoli='$idsoli' data-idModalidad='$idmod' data-tipom='$tipom' data-idDep='$iddep' data-nombreDep='$nomdep' data-id_Man='$idman' data-nomman='$mante' data-idRes='$idres' data-nombreRes='$nomres' data-fechaR='$fechar' data-descrip='$descrip' data-encar='$encar' data-EM='$em' data-obser='$obser'>create</i>
+            <i class='material-icons edit' 
+               data-idSoli='$idsoli' 
+               data-idModalidad='$idmod' 
+               data-tipom='$tipom' 
+               data-idDep='$iddep' 
+               data-nombreDep='$nomdep' 
+               data-id_Man='$idman' 
+               data-nomman='$mante' 
+               data-idPer='$idPer' 
+               data-nombrePer='$nomper' 
+               data-fechaR='$fechar' 
+               data-descrip='$descrip' 
+               data-nom='$nom' 
+               data-em='$em' 
+               data-obser='$obser'>create</i>
             <i class='material-icons delete' data-idSoli='$idsoli'>delete_forever</i>
             </td></tr>";
       }

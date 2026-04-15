@@ -12,6 +12,13 @@
 </head>
 <body>
 
+ <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 <!-- Colocar su código a partir de este comentario -->
 <div class="container">
     <div class="row">
@@ -35,6 +42,7 @@
                                 <th>Correo Electronico del departamento</th>
                                 <th>Telefono</th>
                                 <th>Encargado</th>
+                                <th>Area</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -71,14 +79,28 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="tel" name="telefono" id="telefono" class="validate">
-                    <label for="telefono" class="active">Telefono:</label>
+                    <input type="text" name="telefono" id="telefono" class="validate">
+                    <label for="telefono" class="active">Extencion:</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="text" name="Encargado" id="Encargado" class="validate">
-                    <label for="Encargado" class="active">Encargado</label>
+                    <select name="idjefe" id="idjefe">
+                        <option value="">Selecciona un Encargado</option>
+                        <?php
+                           include_once("./LlenaSelectJefes.php");
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <select name="id_area" id="id_area">
+                        <option value="">Selecciona un area</option>
+                        <?php
+                           include_once("./LlenaSelectAreas.php");
+                        ?>
+                    </select>
                 </div>
             </div>
         </form>

@@ -8,7 +8,8 @@
         $post['nombreDep'] = isset($post['nombreDep']) ? limpiarCadena($post['nombreDep']):"";
         $post['correoDep'] = isset($post['correoDep']) ? limpiarCadena($post['correoDep']):"";
         $post['telefono'] = isset($post['telefono']) ? limpiarCadena($post['telefono']):"";
-        $post['Encargado'] = isset($post['Encargado']) ? limpiarCadena($post['Encargado']):"";
+        $post['idjefe'] = isset($post['idjefe']) ? limpiarCadena($post['idjefe']):"";
+        $post['id_area'] = isset($post['id_area']) ? limpiarCadena($post['id_area']):"";
 
         $accion = $post["accion"];
         if ($accion == "Ins") $result = $obj->Insertar($post);

@@ -1,5 +1,5 @@
 <?php
- $conexion = mysqli_connect("localhost:3307" , "root" , "" , "mantenimientos");
+ $conexion = mysqli_connect("localhost:3306" , "root" , "" , "mantenimientos");
 if(!$conexion){ 
     // Si falla la conexión, muestra error y termina
     echo "Error";
@@ -35,11 +35,11 @@ if($resultado && mysqli_num_rows($resultado) > 0) {
         }
         elseif($filas['idrol'] == 2) {
         // Cliente: rol 2 → página de cliente
-            header("Location: ../Solicitud/index.php");
+            header("Location: ../Correctivos/inicioUsr.php");
             exit();
         }
         elseif($filas['idrol']==3){
-            header("location: ../Correctivos/index.php");
+            header("location: ../Solicitud/SolicitudClt.php");
             exit();
         }
         else {                      // ← este else se queda

@@ -12,6 +12,13 @@
 </head>
 <body>
 
+ <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
+
 <!-- Colocar su código a partir de este comentario -->
 <div class="container">
     <div class="row">
@@ -29,7 +36,6 @@
                         <thead>
                             <tr>
                                 <th>Nombre de Area</th>
-                                <th>Departamento</th>
                                 <th>Director</th>
                                 <th>Subdirector</th>
                                 <th>Direccion Fisica</th>
@@ -63,27 +69,19 @@
                     <label class="active" for="nomArea">Nombre de la Area:</label>
                 </div>
             </div>
-            <div class="input-field col s3">
-                    <select name="idDep" id="idDep">
-                        <option value="">Selecciona una opcion</option>
-                        <?php
-                           include_once("./LlenaSelect.php");
-                        ?>
-                    </select>
-            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="dire" id="dire" class="validate">
                     <label class="active" for="dire">Nombre del Director:</label>
                 </div>
             </div>
-               <div class="row">
+            <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="subdir" id="subdir" class="validate">
                     <label class="active" for="subdir">Nombre del Subdirector:</label>
                 </div>
             </div>
-               <div class="row">
+            <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="direfi" id="direfi" class="validate">
                     <label class="active" for="direfi">Direccion Fisica:</label>

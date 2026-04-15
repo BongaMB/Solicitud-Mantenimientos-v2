@@ -8,11 +8,11 @@
         $post['idModalidad'] = isset($post['idModalidad']) ? limpiarCadena($post['idModalidad']):"";
         $post['idDep'] = isset($post['idDep']) ? limpiarCadena($post['idDep']):"";
         $post['id_Man'] = isset($post['id_Man']) ? limpiarCadena($post['id_Man']):"";
-        $post['idRes'] = isset($post['idRes']) ? limpiarCadena($post['idRes']):"";
+        $post['idPer'] = isset($post['idPer']) ? limpiarCadena($post['idPer']):"";
         $post['fechaR'] = isset($post['fechaR']) ? limpiarCadena($post['fechaR']):"";
         $post['descrip'] = isset($post['descrip']) ? limpiarCadena($post['descrip']):"";
-        $post['encar'] = isset($post['encar']) ? limpiarCadena($post['encar']):"";
-        $post['EM'] = isset($post['EM']) ? limpiarCadena($post['EM']):"";
+        // Eliminado idjefe porque ya no se guarda en solicitud
+        $post['em'] = isset($post['em']) ? limpiarCadena($post['em']):"";
         $post['obser'] = isset($post['obser']) ? limpiarCadena($post['obser']):"";
 
         $accion = $post["accion"];
@@ -24,8 +24,8 @@
             $response['data']=$post; 
         }
         else{
-                $response['status']=0; 
-                $response['data']=$post;
+            $response['status']=0; 
+            $response['data']=$post;
         }
     }
     else{

@@ -11,13 +11,18 @@
     <link rel="icon" type="image/x-icon" href="../fonts/favicon.ico" />
 </head>
 <body>
+     <!--boton de regresar-->
+    <div class="fixed-action-btn" style="bottom: 45px; left: 24px; width: 60px;">
+  <a class="btn-floating btn-large grey darken-3" onclick="window.history.back()">
+    <i class="material-icons">chevron_left</i>
+  </a>
+</div>
 
-<!--                     Ventana modal como pantalla principal                       -->
+<!-- Ventana modal como pantalla principal -->
 <div id="ventanaModal" class="modal" style="display: block; position: relative; opacity: 1; transform: none;">
     <div class="modal-content">
         <h4>Orden de Trabajo de Mantenimiento</h4>
         
-
         <br>
         <form id="formulario" method="post" enctype="multipart/form-data">
             <div class="row">
@@ -47,31 +52,25 @@
                     </select>
                 </div>
                 <div class="input-field col s6">
-                    <select name="idRes" id="idRes">
+                    <select name="idPer" id="idPer">
                         <option value="">Selecciona un Responsable</option>
-                        <?php include_once("./LlenaSelectR.php"); ?>
+                        <?php include_once("./LlenaSelectPersonal.php"); ?>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <input type="date" name="fechaR" id="fechaR" class="validate">
-                    <label for="fechaR" class="active" >Fecha de Realizacion:</label>
+                   <input type="date" name="fechaR" id="fechaR" class="validate" value="<?php date_default_timezone_set('America/Mexico_City'); echo date('Y-m-d'); ?>" readonly>
+                    <label for="fechaR" class="active">Fecha de Realización:</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="descrip" id="descrip" class="validate">
-                    <label for="descrip" class="active">Descripcion del Mantenimiento:</label>
+                    <label for="descrip" class="active">Descripción del Mantenimiento:</label>
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">
-                    <select name="encar" id="encar">
-                        <option value="idDep">Selecciones un jefe de departamento:</option>
-                        <?php include_once("./LlenaSelectEnc.php");?>
-                    </select>
-                </div>
                 <div class="file-field input-field col s6">
                     <div class="btn blue lighten-2">
                         <span>Adjuntar Archivo</span>
@@ -81,27 +80,23 @@
                         <input class="file-path validate" type="IMG" id="IMG" placeholder="Sube una foto o PDF como evidencia">
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="text" name="EM" id="EM" class="validate">
-                    <label for="EM" class="active">Evaluacion del Mantenimiento:</label>
+                <div class="input-field col s6">
+                    <input type="text" name="em" id="em" class="validate">
+                    <label for="em" class="active">Evaluacion del Mantenimiento:</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <input type="text" name="obser" id="obser" class="validate">
-                    <label for="obser" class="active">Obcervaciones:</label>
+                    <label for="obser" class="active">Observaciones:</label>
                 </div>
             </div>
         </form>
         <!-- Botónes para mostrar la tabla -->
         <div class="center-align">
-            <!-- Botón para mostrar la tabla -->
             <div class="center-align">
                 <a class="btn blue lighten-2" onclick="irATabla()">Ver catálogo de departamentos</a>
             </div>
-
         </div>
     </div>
     <div class="modal-footer #80deea cyan lighten-3">
@@ -115,7 +110,6 @@
         <div class="row">
             <div class="col s12 ">
                 <div class="card">
-                   
                     <div class="card-content">
                         <span class="card-title">Registro de ordenes de Mantenimiento</span>
                         <table id="dtTable" class="highlight bordered dataTable">
@@ -127,9 +121,9 @@
                                     <th>Responsable</th>
                                     <th>fecha de realizacion</th>
                                     <th>Descripcion</th>
-                                    <th>Jefe Departamento</th>
+                                    <th>Jefe del Departamento</th>
                                     <th>Evaluacion</th>
-                                    <th>Obcervaciones</th>
+                                    <th>Observaciones</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -137,13 +131,8 @@
                                 <?php include_once("./CargaTabla.php"); ?>
                             </tbody>
                         </table>
-                        <!-- Botón para volver al modal -->
                         <div class="center-align" style="margin-top: 20px;">
-                            <!-- Botón para volver al modal -->
-                            <div class="center-align" style="margin-top: 20px;">
-                                <a class="btn grey lighten-1" onclick="irAModal()">Volver a la Solicitud</a>
-                            </div>
-
+                            <a class="btn grey lighten-1" onclick="irAModal()">Volver a la Solicitud</a>
                         </div>
                     </div>
                 </div>
@@ -165,25 +154,22 @@
         $('.sidenav').sidenav();
         $(".dropdown-trigger").dropdown();
 
-        // Detecta si la URL tiene ?vista=tabla
         const urlParams = new URLSearchParams(window.location.search);
-         const vista = urlParams.get('vista');
+        const vista = urlParams.get('vista');
 
         if (vista === 'tabla') {
-                mostrarTabla();
-            } else {
-                mostrarModal(); // incluye 'modal' o sin parámetro
-            }
-
+            mostrarTabla();
+        } else {
+            mostrarModal();
+        }
     });
 
     function irATabla() {
         window.location.href = "index.php?vista=tabla";
     }
     function irAModal() {
-    window.location.href = "index.php?vista=modal";
-}
-
+        window.location.href = "index.php?vista=modal";
+    }
 
     function mostrarTabla() {
         document.getElementById('ventanaModal').style.display = 'none';

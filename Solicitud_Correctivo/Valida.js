@@ -171,7 +171,11 @@ function guardarRegistro(){ // este lo guarada
                 ]).draw().node();
                 $(row).attr('id',data.idCorr);
 
+                //Aplicar color naranja por defecto a la nueva fila permanente
+                $(row).css('background-color', '#FFE0B2');
+
                 M.toast({html: 'solicitud de mantenimiento Guardada', classes: 'rounded blue lighten-2'});
+
             }
         } 
     });
@@ -191,20 +195,29 @@ function procesarEstado(id, estado) {
         dataType: 'json',
         data: { idCorr: id, accion: 'Estado', nuevoEstado: estado },
         success: function(respuesta) {
-            if (respuesta.status == 1) { // Cambiado a respuesta.status para consistencia
-                M.toast({html: 'Solicitud ' + estado, classes: 'rounded green'});
+            if (respuesta.status == 1) {
+                M.toast({html: 'Solicitud ' + estado, classes: 'blue'});
                 
-                // OPCIONAL: Cambiar el color de fondo de la fila para dar feedback visual
+                var bgColor = "";
+                var txtColor = "black";
+                
                 if(estado == 'Aceptado') {
-                    $('#' + id).css('background-color', '#e8f5e9'); // Verde muy claro
+                    bgColor = "#C8E6C9";
+                } else if(estado == 'Rechazado') {
+                    bgColor = "#FFCDD2";
+                    txtColor = "white";
                 } else {
-                    $('#' + id).css('background-color', '#ffebee'); // Rojo muy claro
+                    bgColor = "#FFE0B2";
                 }
+
+                // Forzamos el estilo directamente en el atributo para que sea inmediato
+                $('#' + id).attr('style', 'background-color: ' + bgColor + ' !important; color: ' + txtColor + ' !important;');
+                
             } else {
                 M.toast({html: 'Error al actualizar estado', classes: 'rounded red'});
             }
         }
     });
-}
+}   
 
 
